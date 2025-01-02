@@ -3,7 +3,8 @@ extends Node
 var score = 0
 
 
-@onready var score_label = $scoredisplay/ScoreLabel
+@onready
+var score_label = $scoredisplay/ScoreLabel
 
 
 func add_point():
