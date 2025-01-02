@@ -1,0 +1,84 @@
+[gd_scene load_steps=10 format=3 uid="uid://6qe44r5msdkb"]
+
+[ext_resource type="Script" path="res://scripts/slime_purple.gd" id="1_ptb8f"]
+[ext_resource type="Texture2D" uid="uid://bwoec51f6mei0" path="res://assets/sprites/slime_purple.png" id="2_4tm8a"]
+[ext_resource type="PackedScene" uid="uid://dj8jyxmnf1c8s" path="res://scenes/kilzone.tscn" id="3_eaxa4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wcf2"]
+atlas = ExtResource("2_4tm8a")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6q6g"]
+atlas = ExtResource("2_4tm8a")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qklj"]
+atlas = ExtResource("2_4tm8a")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xq0b5"]
+atlas = ExtResource("2_4tm8a")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v4711"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wcf2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6q6g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qklj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xq0b5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6a4ie"]
+size = Vector2(10, 15)
+
+[node name="slime_purple" type="Node2D"]
+script = ExtResource("1_ptb8f")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_v4711")
+autoplay = "default"
+frame_progress = 0.724673
+
+[node name="kilzone" parent="." instance=ExtResource("3_eaxa4")]
+position = Vector2(0, -13)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kilzone"]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_6a4ie")
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0, -8)
+target_position = Vector2(10, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, -8)
+target_position = Vector2(-10, 0)
+
+[node name="RayCastFloor" type="RayCast2D" parent="."]
+position = Vector2(0, -8)
+target_position = Vector2(0, 14)
+
+[node name="RayCastPlazerTriggerLeft" type="RayCast2D" parent="."]
+position = Vector2(-1, -8)
+target_position = Vector2(-60, 0)
+collision_mask = 2
+
+[node name="RayCastPlazerTriggerRigth" type="RayCast2D" parent="."]
+position = Vector2(-1, -8)
+target_position = Vector2(66, 0)
+collision_mask = 2
+
+[connection signal="child_order_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_child_order_changed"]
