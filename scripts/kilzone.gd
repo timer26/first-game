@@ -1,12 +1,17 @@
 extends Area2D
 
 @onready var timer = $Timer
+@onready var player = get_node_or_null("/root/Game/Player")
 
 func _on_body_entered(body):
+	
 	print("mrtvola")
+
+	
+	if(player != null):
+		player.removeHeatlth()
 	#Engine.time_scale = 0.5
 	#body.get_node ("CollisionShapePlayer").queue_free()
-	body.removeHeatlth()
 
 	#timer.start()
 #

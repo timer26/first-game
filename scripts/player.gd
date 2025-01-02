@@ -30,6 +30,7 @@ func _physics_process(delta):
 #	play animation
 	if is_on_floor():
 		if direction == 0:
+			pass
 			animated_sprite.play("idle")
 		else:
 			animated_sprite.play("run")
@@ -46,11 +47,10 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func removeHeatlth ():
+	print("hit")
 	MAXIMUM_HEALTH -=1	
 	animated_sprite.play("hit")
 	
-	
-	
-	
-	
+func hi() -> String:
+	return "hieaa"
 	
