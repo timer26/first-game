@@ -405,10 +405,10 @@ frame_progress = 0.90216
 
 [node name="ScoreLabel" type="Label" parent="GameManager/scoredisplay"]
 z_index = 10
-offset_left = 196.0
-offset_top = -200.0
-offset_right = 236.0
-offset_bottom = -177.0
+offset_left = 193.0
+offset_top = -237.0
+offset_right = 233.0
+offset_bottom = -214.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("9_qcegf")
 theme_override_font_sizes/font_size = 8
